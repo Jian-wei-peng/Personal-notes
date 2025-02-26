@@ -10,23 +10,23 @@ MetaPackage是Linux的一个文件管理系统的概念。是ROS中的一个虚�
 
 	- 修改package.xml：
 
-		```xml
-		 <exec_depend>被集成的功能包</exec_depend>
-		 .....
-		 <export>
-		   <metapackage />
-		 </export>
-		```
+	  ```xml
+	   <exec_depend>被集成的功能包</exec_depend>
+	   .....
+	   <export>
+	     <metapackage />
+	   </export>
+	  ```
 
 	- 修改CMakeLists.txt：
 
-		```c++
-		cmake_minimum_required(VERSION 3.0.2)
-		project(demo)
-		find_package(catkin REQUIRED)
-		catkin_metapackage()
-		
-		```
+	  ```txt
+	  cmake_minimum_required(VERSION 3.0.2)
+	  project(demo)
+	  find_package(catkin REQUIRED)
+	  catkin_metapackage()
+	  ```
+	
 
 ## 二、launch文件
 
@@ -108,9 +108,9 @@ roslaunch 包名 xxx.launch
 
 - `textfile`：以字符串形式读取文件的内容（**该文件必须是本地可访问的**）
 
-	```xml
-	textfile="$(find package_name)/path/file.txt"
-	```
+  ```xml
+  textfile="$(find package_name)/path/file.txt"
+  ```
 
 #### 3.3.2 rosparam
 
@@ -118,9 +118,9 @@ roslaunch 包名 xxx.launch
 
 - **加载多个参数**
 
-	```xml
-	<rosparam file="$(find 2dnav_pr2)/config/costmap_common_params.yaml" command="load" ns="local_costmap"/>
-	```
+  ```xml
+  <rosparam file="$(find 2dnav_pr2)/config/costmap_common_params.yaml" command="load" ns="local_costmap"/>
+  ```
 
 - `<rosparam>`可以帮助我们将一个YAML格式文件中的参数全部加载到ROS参数服务器中
 
@@ -134,30 +134,36 @@ roslaunch 包名 xxx.launch
 
 - 三种调用方式：
 
-	1. **声明参数arg_name**。arg_name既可以作为命令行参数传递，也可以通过<include>传递（如果被包含的话）
+  - **声明参数arg_name**
 
-		```xml
-		<arg name="arg_name"/>
-		```
+    - arg_name既可以作为命令行参数传递，也可以通过<include>传递（如果被包含的话）
 
-	2. **声明有默认值arg_value的arg_name**。arg_name能被覆盖（通过命令行参数传递（顶层），也可以通过`<include>`传递（如果被包含的话））
+    ```xml
+    <arg name="arg_name"/>
+    ```
 
-		```xml
-		<arg name="arg_name" default="arg_value"/>
-		```
+  - **声明有默认值arg_value的arg_name**
 
-	3. **声明有常值的arg_name**。arg_name**不能被重写**。这种用法保证了启动文件内部的参数化
+    - arg_name能被覆盖（通过命令行参数传递（顶层），也可以通过`<include>`传递（如果被包含的话））
 
-		```xml
-		<arg name="arg_name" value="bar">
-		```
+    ```xml
+    <arg name="arg_name" default="arg_value"/>
+    ```
 
-launch文件中需要使用到argument时，可以使用如下方式调用：
+  - **声明有常值的arg_name**。arg_name**不能被重写**
 
-```xml
-<param name="foo" value="$(arg arg_name"/>
-<node name="node" pkg="package" type="type" args="$(arg arg_name)"/>
-```
+    - 这种用法保证了启动文件内部的参数化
+
+    ```c++
+    <arg name="arg_name" value="bar">
+    ```
+
+- launch文件中需要使用到argument时，可以使用如下方式调用：
+
+  ```xml
+  <param name="foo" value="$(arg arg_name"/>
+  <node name="node" pkg="package" type="type" args="$(arg arg_name)"/>
+  ```
 
 ### 3.4 重映射机制 —— `<remp>`
 
@@ -167,12 +173,12 @@ launch文件中需要使用到argument时，可以使用如下方式调用：
 
 - **`<remp>`标签允许通过名称映射参数到ROS节点，其适用于在其范围内随后的所有声明**。用法如下：
 
-	```xml
-	<remap from="original_name" to="new_name"/>
-	```
+  ```xml
+  <remap from="original_name" to="new_name"/>
+  ```
 
-	- **from="original_name"**：定义需要映射的参数名称
-	- **to="new_name"**：定义目标名称
+  - **from="original_name"**：定义需要映射的参数名称
+  - **to="new_name"**：定义目标名称
 
 ### 3.5 嵌套复用 —— `<include>`
 
@@ -180,11 +186,12 @@ launch文件中需要使用到argument时，可以使用如下方式调用：
 
 - 如果需要直接**复用一个已有launch文件中的内容，可以使用`<include>`标签包含其他launch文件**。使用方式：
 
-	```xml
-	<include file="$(dirname)/other.launch"/>
-	```
+  ```c++
+  <include file="$(dirname)/other.launch"/>
+  ```
 
-	
+
+​	
 
 
 

@@ -4,22 +4,22 @@
 
 1. 启动ros，打开turtlesim仿真环境：`rosrun turtlesim turtlesim_node`
 
-	<img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211600638.png" alt="image-20220621160039587" style="zoom:50%;" />
+   <img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211600638.png" alt="image-20220621160039587" style="zoom:50%;" />
 
 2. 查看当前的服务：`rosservice list`
 
-	<img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211600967.png" alt="image-20220621160001881" style="zoom:50%;" />
+   <img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211600967.png" alt="image-20220621160001881" style="zoom:50%;" />
 
-	*   其中**/spawn**可用于调用生成新的乌龟
-	    * 输入`rosservice call /spawn`，然后点击两下tab进行补全
-	    
-	    	*   可输入新生成乌龟的初始位置以及名字
-	    
-	    	<img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211601321.png" alt="image-20220621160156285" style="zoom:67%;" />
-	    
-	    * 输入`rosservice type /spawn`，可以查看/spawn的消息格式为**turtlesim/Spawn**
-	    
-	    	<img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211602134.png" alt="image-20220621160229112" style="zoom:67%;" />
+   - 其中**/spawn**可用于调用生成新的乌龟
+
+     - 输入`rosservice call /spawn`，然后点击两下tab进行补全
+     - 可输入新生成乌龟的初始位置以及名字
+
+     <img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211601321.png" alt="image-20220621160156285" style="zoom:67%;" />
+
+   - 输入`rosservice type /spawn`，可以查看/spawn的消息格式为**turtlesim/Spawn**
+
+     <img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211602134.png" alt="image-20220621160229112" style="zoom:67%;" />
 
 <img src="https://raw.githubusercontent.com/Jian-wei-peng/typora-pic/main/202206211603131.png" alt="image-20220621160306096" style="zoom:50%;" />
 

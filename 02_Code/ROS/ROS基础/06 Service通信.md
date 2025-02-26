@@ -171,41 +171,49 @@ rosrun learning_communication string_client
 
 1. **在代码目录下创建srv文件夹，在srv文件夹下创建PersonSrv.srv文件**
 
-	```shell
-	cd ~/catkin_ws/src/learning_communication
-	mkdir srv
-	cd srv
-	touch PersonSrv.msg
-	```
+   - 创建srv文件
 
-	```c++
-	#客户端端数据
-	string name
-	uint8 age
-	uint8 sex
-		
-	uint8 unknown = 0
-	uint8 male = 1
-	uint8 female = 2
-	---
-		
-	#服务器端数据
-	string result
-	```
+     ```shell
+     cd ~/catkin_ws/src/learning_communication
+     mkdir srv
+     cd srv
+     touch PersonSrv.srv
+     ```
+
+   - srv文件内容
+
+     ```c++
+     #客户端端数据
+     string name
+     uint8 age
+     uint8 sex
+     	
+     uint8 unknown = 0
+     uint8 male = 1
+     uint8 female = 2
+     ---
+     	
+     #服务器端数据
+     string result
+     ```
 
 2. **在package.xml中添加功能包依赖**
 
-	<build_depend>message_generation</build_depend>
-	<exec_depend>message_runtime</exec_depend>
+```xml
+<build_depend>message_generation</build_depend>
+<exec_depend>message_runtime</exec_depend>
+```
 
 3. **在CMakeList.txt添加编译选项**
 
-	find_package(... message_generation)
-	    
-	add_service_files(FILES PersonSrv.srv)
-	generate_messages(DEPENDENCIES std_msgs)
-	
-	catkin_package(... message_runtime)
+```txt
+find_package(... message_generation)
+    
+add_service_files(FILES PersonSrv.srv)
+generate_messages(DEPENDENCIES std_msgs)
+
+catkin_package(... message_runtime)
+```
 
 4. **回到根目录编译，并source环境变量**
 
